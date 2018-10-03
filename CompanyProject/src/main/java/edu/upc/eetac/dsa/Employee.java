@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa;
 import java.util.Date;
 import java.util.List;
 
-public class Employee extends MyManager{
+public class Employee{
     private String name;
     private String username;
     private Date birthday;
