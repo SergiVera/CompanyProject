@@ -122,10 +122,21 @@ public class CompanyeManagerTest {
     //We will test if we obtain properly the employees that work on indicated company
     @Test
     public void employees(){
-        List<Employee> e = this.cm.employees("SEAT");
+        try {
+            List<Employee> e = this.cm.employees("SEAT");
 
-        assertEquals(e.get(0).name, "Sergi");
-        assertEquals(e.get(1).name, "Meritxell");
+            assertEquals(e.get(0).name, "Sergi");
+            assertEquals(e.get(1).name, "Meritxell");
+        }
+        catch(CompanyNotFoundException e){
+            log.warn("La empresa que ha introducido para buscar a sus empleados NO existe!: " +e.getMessage());
+        }
+    }
+
+    //We will test the same as the test employees, but now with the exception
+    @Test(expected = CompanyNotFoundException.class)
+    public void employeesAndCompanyNotFound() throws CompanyNotFoundException{
+        List<Employee> e = this.cm.employees("SPE");
     }
 
 

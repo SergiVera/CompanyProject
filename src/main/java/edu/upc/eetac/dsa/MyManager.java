@@ -60,7 +60,7 @@ public  class MyManager implements CompanyManager {
     }
 
     //Show all the employees in the linkedlist given a company name
-    public List<Employee> employees(String company){
+    public List<Employee> employees(String company) throws CompanyNotFoundException{
         List<Employee> employees=null;
 
         //We want theCompany value, given a company entered by the user
@@ -68,12 +68,9 @@ public  class MyManager implements CompanyManager {
         if (theCompany!=null) {
             employees = theCompany.employees();
         }
-        else{
-
-        }
+        else throw new CompanyNotFoundException();
 
         return employees;
-
     }
 
     //Show all the companies in the hashmap
